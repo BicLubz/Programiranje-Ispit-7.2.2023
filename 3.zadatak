@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<math.h>
+
+int funkcija(short int *p, int n){
+    float suma = 0;
+    int i;
+    
+    for(i=2;i<n;i++){
+        suma = suma + ( ((1 / *(p+i)) + abs(*(p+i-1)) + (1/((*(p+i-2))*(*(p+i-2))))) / (i*i));
+    }
+    
+   return suma;
+}
+
+int main(void){
+    
+    short int *p;
+    int n = 20;
+    int i;
+    float rez = 0;
+    
+    p = (short int *)malloc(20 * sizeof(short int));
+    
+    srand((unsigned) time (NULL));
+    
+    for(i=0;i<n;i++){
+        *(p+i) = -15 + (float)rand()/RAND_MAX * (5+15);
+    }
+    
+    for(i=0;i<n;i++){
+        printf("%d\n",*(p+i));
+    }
+    
+    rez = funkcija(p,n);
+    
+    printf("%f",rez);
+    
+    return 0;
+}
