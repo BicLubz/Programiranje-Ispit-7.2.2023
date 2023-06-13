@@ -1,0 +1,42 @@
+/*Napisati funkciju koja odreduje i vraca koliko brojeva ima prvu znamenku (prvu s lijeva) vecu od 5, predanog joj cijelog polja. Omoguciti u main korisniku popunjavanje cjelobrojnog polja od 10 elemenata, 
+ali iskljucivo negativnim vrijednostima ( ako unos nije negativan ponoviti ga). Pozvati funkciju u main i viditi kolko znamenaka ima prvi broj veci od 5.
+
+2.
+#include <stdio.h>
+#include <stdlib.h>
+
+int funkcija(int a[], int velicina) {
+    int br = 0;
+    for (int i = 0; i < velicina; i++) {
+        if (abs(a[i]) >= 10 && abs(a[i]) < 100) {
+            int prbr = abs(a[i]) / 10;
+            if (prbr > 5) {
+                br++;
+            }
+        } else if (abs(a[i]) >= 100) {
+            int prbr = abs(a[i]) / 100;
+            if (prbr > 5) {
+                br++;
+            }
+        }
+    }
+    return br;
+}
+
+int main() {
+    int a[10];
+
+    // Ask the user to fill the array with negative values
+    printf("Enter 10 negative integer values:\n");
+    for (int i = 0; i < 10; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    // Call the function to count the number of elements with a first digit greater than 5
+    int br = funkcija(a, 10);
+
+    // Print the result to the console
+    printf("Number of elements with a first digit greater than 5: %d\n", br);
+
+    return 0;
+}
