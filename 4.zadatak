@@ -1,0 +1,40 @@
+/*Napisati funkciju koja racuna i vraca aritmeticku sredinu znakova ( po ASCII vrijednosti) predanog joj stringa koji predstavljaju mala slova. Ako string ne sadrzi niti jedno malo slovo
+funkcija vraca 0. Dinamicki zauzeti  memoriju za 20 podataka tipa char. Omoguciti korisniku unos stringa i osigurati da ne promasi velicinu zauzetog polja. 
+Dodatno pozvati funkciju sa 'Hello - World' i na ispisati vrijednost*/
+
+4.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int arsr(char* str) {
+    int br = 0;
+    int sum = 0;
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] >= 'a' && str[i] <= 'z' || str[i]==' ') {
+            br++;
+            sum += str[i];
+        }
+    }
+    if (br == 0) {
+        return 0;
+    }
+    return sum / br;
+}
+
+int main() {
+    char str[20];
+
+    printf("Enter a string of lowercase letters:\n");
+    scanf("%s", str);
+
+    int srvr = arsr(str);
+
+    if (srvr == 0) {
+        printf("The string has no lowercase letters.\n");
+    } else {
+        printf("Middle value of ASCII signs: %d\n", srvr);
+    }
+
+    return 0;
+}
